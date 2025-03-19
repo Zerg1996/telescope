@@ -275,9 +275,9 @@ class SourceDataRequestSerializer(serializers.Serializer):
     def validate(self, data):
         if data.get("raw_query"):
             if not user_has_source_permissions(
-                self.context["user"],
-                source_slug=self.context["source"].slug,
-                required_permissions=[permissions.Source.RAW_QUERY.value],
+                    self.context["user"],
+                    source_slug=self.context["source"].slug,
+                    required_permissions=[permissions.Source.RAW_QUERY.value],
             ):
                 raise serializers.ValidationError(SerializeErrorMsg.RAW_QUERIES_PERMISSIONS)
         return data

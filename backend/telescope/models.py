@@ -4,21 +4,20 @@ from typing import List, Dict
 from django.db import models
 from django.contrib.auth.models import User, Group
 
-
 logger = logging.getLogger("telescope.models")
 
 
 class SourceField:
     def __init__(
-        self,
-        name: str,
-        display_name: str,
-        type: str,
-        jsonstring: bool,
-        autocomplete: bool,
-        suggest: bool,
-        group_by: bool,
-        values: List[str],
+            self,
+            name: str,
+            display_name: str,
+            type: str,
+            jsonstring: bool,
+            autocomplete: bool,
+            suggest: bool,
+            group_by: bool,
+            values: List[str],
     ):
         self.name = name
         self.display_name = display_name

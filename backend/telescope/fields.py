@@ -55,9 +55,9 @@ KNOWN_MODIFIERS = [
 
 class ParserError(Exception):
     def __init__(
-        self,
-        message,
-        errno,
+            self,
+            message,
+            errno,
     ):
         self.message = message
         self.errno = errno
@@ -92,11 +92,11 @@ class State(Enum):
 
 class Char:
     def __init__(
-        self,
-        value,
-        pos,
-        line,
-        line_pos,
+            self,
+            value,
+            pos,
+            line,
+            line_pos,
     ):
         self.value = value
         self.pos = pos
@@ -105,18 +105,18 @@ class Char:
 
     def is_field_value(self):
         return (
-            self.value.isalnum()
-            or self.value == UNDERSCORE
-            or self.value == DOT
-            or self.value == COLON
-            or self.value == SLASH
+                self.value.isalnum()
+                or self.value == UNDERSCORE
+                or self.value == DOT
+                or self.value == COLON
+                or self.value == SLASH
         )
 
     def is_modifier_argument_value(self):
         return (
-            self.value != MODIFIER_ARGUMENT_DELIMITER
-            and self.value != BRACKET_OPEN
-            and self.value != BRACKET_CLOSE
+                self.value != MODIFIER_ARGUMENT_DELIMITER
+                and self.value != BRACKET_OPEN
+                and self.value != BRACKET_CLOSE
         )
 
     def is_modifier_double_quoted_argument_value(self):
@@ -167,7 +167,7 @@ class Char:
 
 class Parser:
     def __init__(
-        self,
+            self,
     ):
         self.line = 0
         self.line_pos = 0
@@ -363,8 +363,8 @@ class Parser:
                     "unexpected end of alias. Expected alias value", 13
                 )
         elif (
-            self.state == State.EXPECT_ALIAS_OPERATOR
-            or self.state == State.EXPECT_ALIAS_DELIMITER
+                self.state == State.EXPECT_ALIAS_OPERATOR
+                or self.state == State.EXPECT_ALIAS_DELIMITER
         ):
             self.set_error_state("unexpected end of alias. Expected alias value", 14)
         elif self.state == State.MODIFIER:
@@ -376,8 +376,8 @@ class Parser:
             self.store_modifier()
             self.store_field()
         elif (
-            self.state == State.MODIFIER_ARGUMENT_DOUBLE_QUOTED
-            or self.state == State.MODIFIER_ARGUMENT_SINGLE_QUOTED
+                self.state == State.MODIFIER_ARGUMENT_DOUBLE_QUOTED
+                or self.state == State.MODIFIER_ARGUMENT_SINGLE_QUOTED
         ):
             self.set_error_state("unexpected end of quoted argument value", 12)
         elif self.state == State.EXPECT_MODIFIER_ARGUMENT_DELIMITER:
@@ -570,13 +570,13 @@ class Parser:
 
 class ParsedField:
     def __init__(
-        self,
-        name: str,
-        root_name: str,
-        type: bool,
-        jsonstring: bool,
-        display_name: bool,
-        modifiers: List,
+            self,
+            name: str,
+            root_name: str,
+            type: bool,
+            jsonstring: bool,
+            display_name: bool,
+            modifiers: List,
     ):
         self.name = name
         self.root_name = root_name

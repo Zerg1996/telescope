@@ -70,7 +70,7 @@ def grant_source_role(source, role, user=None, group=None):
     binding = None
 
     if not SourceRoleBinding.objects.filter(
-        user=user, group=group, source=source, role=role
+            user=user, group=group, source=source, role=role
     ).exists():
         created = True
         binding = SourceRoleBinding.objects.create(
@@ -98,7 +98,7 @@ def revoke_source_role(source, role, user=None, group=None):
 
 
 def require_source_permissions(
-    user, source_slug, required_permissions, raise_exception=True
+        user, source_slug, required_permissions, raise_exception=True
 ):
     groups = user.groups.all()
     global_user_permissions = get_user_global_permissions(user, groups=groups)

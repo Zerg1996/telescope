@@ -5,7 +5,6 @@ from django.core.exceptions import PermissionDenied
 
 from telescope.rbac.helpers import get_user_global_permissions
 
-
 logger = logging.getLogger("telescope.auth.decorators")
 
 

@@ -3,43 +3,45 @@
 
 {% endblock %}
 {% block body %}
-<div style="height: 100vh; width: 100wh; background: linear-gradient(135deg, rgb(5, 7, 10), rgb(40, 60, 80));"{% if force_github_auth %} hidden{%endif%} >
-  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-    <div style="max-width: 500px; width: 500px; min-width: 500px;display: flex; align-items: left;">
-      <img src="/static/namedlogo.png" style="margin-bottom: 10px; padding-left: 10px;" />
-    </div>
-    <div class="form-box">
-      <div class="form-label">Sign in to your account</div>
-      <form action="/login" method="post">
-        {% csrf_token %}
+<div %} force_github_auth hidden{%endif%}
+     if style="height: 100vh; width: 100wh; background: linear-gradient(135deg, rgb(5, 7, 10), rgb(40, 60, 80));" {%>
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+        <div style="max-width: 500px; width: 500px; min-width: 500px;display: flex; align-items: left;">
+            <img src="/static/namedlogo.png" style="margin-bottom: 10px; padding-left: 10px;"/>
+        </div>
+        <div class="form-box">
+            <div class="form-label">Sign in to your account</div>
+            <form action="/login" method="post">
+                {% csrf_token %}
 
-        {% for field in form %}
-        <div class="field">
-          <div class="field-errors">{{ field.errors }}</div>
-          <div class="field-label">{{ field.name|capfirst }}</div>
-          {{ field }}
+                {% for field in form %}
+                <div class="field">
+                    <div class="field-errors">{{ field.errors }}</div>
+                    <div class="field-label">{{ field.name|capfirst }}</div>
+                    {{ field }}
+                </div>
+                {% endfor %}
+                <div class="form-errors">
+                    {% for err in form.non_field_errors %}
+                    {{ err }}
+                    {% endfor %}
+                </div>
+                <input class="btn-submit" type="submit" value="Submit">
+            </form>
+            {% if github_enabled %}
+            <div style="display: flex; justify-content: center; align-items:center; margin-top: 10px;">or sign in with
+            </div>
+            <form action="/login/github/login/" method="post">
+                {% csrf_token %}
+                <input class="btn-thirdparty" id="github_submit" type="submit" value="GitHub">
+            </form>
+            {% endif %}
         </div>
-        {% endfor %}
-        <div class="form-errors">
-        {% for err in form.non_field_errors %}
-          {{ err }}
-        {% endfor %}
-        </div>
-        <input class="btn-submit"  type="submit" value="Submit">
-      </form>
-      {% if github_enabled %}
-      <div style="display: flex; justify-content: center; align-items:center; margin-top: 10px;">or sign in with</div>
-      <form action="/login/github/login/" method="post">
-        {% csrf_token %}
-        <input id="github_submit" class="btn-thirdparty" type="submit" value="GitHub">
-      </form>
-      {% endif %}
     </div>
-  </div>
 </div>
 {% if force_github_auth %}
 <script>
-document.getElementById("github_submit").click()
+    document.getElementById("github_submit").click()
 </script>
 {% endif %}
 {% endblock %}

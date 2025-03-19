@@ -8,16 +8,17 @@ from telescope.models import Source
 from telescope.constants import UTC_ZONE
 
 import logging
+
 logger = logging.getLogger("telescope.models")
 
 
 class Row:
     def __init__(
-        self,
-        source: Source,
-        selected_fields: List[str],
-        values: List[Any],
-        timezone: ZoneInfo = UTC_ZONE,
+            self,
+            source: Source,
+            selected_fields: List[str],
+            values: List[Any],
+            timezone: ZoneInfo = UTC_ZONE,
     ):
         self.source = source
         self.data = {}

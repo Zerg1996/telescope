@@ -81,8 +81,8 @@ class Fetcher(BaseFetcher):
 
     @classmethod
     def fetch_graph_data(
-        cls,
-        request: GraphDataRequest,
+            cls,
+            request: GraphDataRequest,
     ):
         if request.query:
             parser = parse(request.query)
@@ -159,7 +159,7 @@ class Fetcher(BaseFetcher):
                 stats_time_selector = f"toUnixTimestamp64Milli({to_time_zone})"
 
         with clickhouse.Client(
-            **get_source_database_conn_kwargs(request.source)
+                **get_source_database_conn_kwargs(request.source)
         ) as client:
             stat_sql = f"SELECT {stats_time_selector} as t, COUNT() as Count"
             if group_by_value:
@@ -209,9 +209,9 @@ class Fetcher(BaseFetcher):
 
     @classmethod
     def fetch_data(
-        self,
-        request: DataRequest,
-        timezone,
+            self,
+            request: DataRequest,
+            timezone,
     ):
         if request.query:
             parser = parse(request.query)
@@ -245,7 +245,7 @@ class Fetcher(BaseFetcher):
         rows = []
 
         with clickhouse.Client(
-            **get_source_database_conn_kwargs(request.source)
+                **get_source_database_conn_kwargs(request.source)
         ) as client:
             selected_fields = [request.source._record_pseudo_id_field] + fields_names
             for item in client.execute(select_query):

@@ -1,11 +1,9 @@
 from django.urls import path, re_path
 
-
 import telescope.views.index as index
 import telescope.views.rbac.views as rbac
 import telescope.views.source.views as source
 import telescope.views.auth.views as auth
-
 
 urlpatterns = [
     path("login", auth.LoginView.as_view(), name="login"),
