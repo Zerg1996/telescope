@@ -7,9 +7,9 @@ import jsonschema
 
 class ConfigValidationError(RuntimeError):
     def __init__(
-        self,
-        message,
-        errors=None,
+            self,
+            message,
+            errors=None,
     ):
         self.message = message
         self.errors = errors or []
@@ -22,7 +22,6 @@ class ConfigValidationError(RuntimeError):
 
 
 JSONSchemaValidator = jsonschema.Draft7Validator
-
 
 SCHEMA = {
     "type": "object",
@@ -102,8 +101,8 @@ def validate(config, schema):
 
     if not errors:
         if (
-            config["auth"]["force_github_auth"]
-            and not config["auth"]["providers"]["github"]["enabled"]
+                config["auth"]["force_github_auth"]
+                and not config["auth"]["providers"]["github"]["enabled"]
         ):
             errors.append(
                 (

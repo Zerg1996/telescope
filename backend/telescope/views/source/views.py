@@ -51,7 +51,6 @@ from telescope.serializers.source import (
     SourceAutocompleteRequestSerializer,
 )
 
-
 logger = logging.getLogger("telescope.views.source")
 
 
@@ -93,9 +92,9 @@ class SourceView(APIView):
                     required_permissions=[permissions.Source.READ.value],
                 )
                 if user_has_source_permissions(
-                    request.user,
-                    source_slug=slug,
-                    required_permissions=[permissions.Source.EDIT.value],
+                        request.user,
+                        source_slug=slug,
+                        required_permissions=[permissions.Source.EDIT.value],
                 ):
                     serializer_class = SourceWithConnectionSerializer
                 else:

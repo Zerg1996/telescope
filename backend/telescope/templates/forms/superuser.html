@@ -1,35 +1,35 @@
 {% extends "auth.html" %}
 {% block body %}
 <div style="height: 100vh; width: 100wh; background: linear-gradient(135deg, rgb(5, 7, 10), rgb(40, 60, 80));">
-  <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
-    <div style="max-width: 500px; width: 500px; min-width: 500px;display: flex; align-items: left;">
-      <img src="/static/namedlogo.png" style="margin-bottom: 10px; padding-left: 10px;" />
-    </div>
-    <div class="form-box">
-      <div class="form-label">Create superuser account</div>
-      <form action="/setup" method="post">
-        {% csrf_token %}
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh;">
+        <div style="max-width: 500px; width: 500px; min-width: 500px;display: flex; align-items: left;">
+            <img src="/static/namedlogo.png" style="margin-bottom: 10px; padding-left: 10px;"/>
+        </div>
+        <div class="form-box">
+            <div class="form-label">Create superuser account</div>
+            <form action="/setup" method="post">
+                {% csrf_token %}
 
-        {% for field in form %}
-        <div class="field">
-          <div class="field-label">{{ field.label|capfirst }}</div>
-          {{ field }}
-          <div class="field-errors">
-            {% for error in field.errors %}
-            &ndash; {{ error }}
-            {% endfor %}
-          </div>
+                {% for field in form %}
+                <div class="field">
+                    <div class="field-label">{{ field.label|capfirst }}</div>
+                    {{ field }}
+                    <div class="field-errors">
+                        {% for error in field.errors %}
+                        &ndash; {{ error }}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="form-errors">
+                    {% for err in form.non_field_errors %}
+                    {{ err }}
+                    {% endfor %}
+                </div>
+                <input class="btn-submit" type="submit" value="Create">
+            </form>
         </div>
-        {% endfor %}
-        <div class="form-errors">
-        {% for err in form.non_field_errors %}
-          {{ err }}
-        {% endfor %}
-        </div>
-        <input class="btn-submit"  type="submit" value="Create">
-      </form>
     </div>
-  </div>
 </div>
 {% endblock %}
 

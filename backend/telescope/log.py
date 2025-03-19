@@ -2,7 +2,6 @@ import os
 import json
 import logging
 
-
 DEFAULT_FORMAT = (
     "%(asctime)s\t"
     "%(process)-6d\t"
@@ -58,8 +57,8 @@ class JsonFormatter(logging.Formatter):
 
 class LogConfig:
     def __init__(
-        self,
-        config,
+            self,
+            config,
     ):
         self.config = config
 

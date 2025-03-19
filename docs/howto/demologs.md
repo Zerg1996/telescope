@@ -5,7 +5,7 @@ Although setting up and configuring ClickHouse is beyond the scope of this docum
 ## 1. Prepare database & table
 
 ```sql
-CREATE DATABASE logs.logs;
+CREATE DATABASE logs;
 CREATE TABLE logs.logs
 (
     `timestamp` DateTime64(9, 'UTC') CODEC(Delta(8), ZSTD(1)),

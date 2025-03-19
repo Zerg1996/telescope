@@ -5,12 +5,12 @@ from telescope.fields import ParsedField
 
 class AutocompleteRequest:
     def __init__(
-        self,
-        source: Source,
-        field: str,
-        time_from: int,
-        time_to: int,
-        value: str,
+            self,
+            source: Source,
+            field: str,
+            time_from: int,
+            time_to: int,
+            value: str,
     ):
         self.source = source
         self.field = field
@@ -21,13 +21,13 @@ class AutocompleteRequest:
 
 class DataRequest:
     def __init__(
-        self,
-        source: Source,
-        query: str,
-        raw_query: str,
-        time_from: int,
-        time_to: int,
-        limit: int,
+            self,
+            source: Source,
+            query: str,
+            raw_query: str,
+            time_from: int,
+            time_to: int,
+            limit: int,
     ):
         self.source = source
         self.query = query
@@ -39,13 +39,13 @@ class DataRequest:
 
 class GraphDataRequest:
     def __init__(
-        self,
-        source: Source,
-        query: str,
-        raw_query: str,
-        time_from: int,
-        time_to: int,
-        group_by: List[ParsedField],
+            self,
+            source: Source,
+            query: str,
+            raw_query: str,
+            time_from: int,
+            time_to: int,
+            group_by: List[ParsedField],
     ):
         self.source = source
         self.query = query

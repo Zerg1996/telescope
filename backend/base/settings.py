@@ -19,7 +19,6 @@ DEBUG = CONFIG["django"].get("DEBUG", False)
 
 ALLOWED_HOSTS = CONFIG["django"].get("ALLOWED_HOSTS", [])
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -92,7 +91,6 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = "base.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
@@ -116,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
@@ -127,7 +124,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -160,7 +156,6 @@ LOGIN_REDIRECT_URL = "/"
 
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
